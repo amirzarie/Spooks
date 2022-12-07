@@ -1,0 +1,36 @@
+#game {
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+}
+
+#sky {
+    background-color: blue;
+    width: 100vw;
+    height: 80vh;
+    position: absolute;
+}
+
+#ground {
+    background-color: brown;
+    width: 100vw;
+    height: 20vh;
+    position: absolute;
+    top: 80vh;
+}
+
+#bird {
+    background-color: yellow;
+    width: 7vw;
+    height: 7vw;
+    position: absolute;
+    left: 25vw;
+}
+
+/* // #obstacle {
+    //     background-color: green;
+    //     width: 10vw;
+    //     height = 50-55vh;
+    //     position: absolute;
+    //     right: -10vw;
+    // } */
