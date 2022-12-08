@@ -1,10 +1,10 @@
 // Capturing the main elements for ease of access.
-const bird = document.querySelector("#bird")
+const player = document.querySelector("#player")
 const gameDisplay = document.querySelector("#game")
 const ground = document.querySelector("#ground")
 
 // Setting the parameters for the game dynamics.
-let birdBottom = 40
+let playerBottom = 40
 let gravity = 2
 const jumpHeight = 6
 let obstacleHeight = 0
@@ -19,9 +19,9 @@ let topOrBottom = 0;
 
 // The main function that runs the game.
 function main() {
-    birdBottom -= gravity
-    bird.style.bottom = birdBottom + "vh"
-    bird.style.right = "74vw"
+    playerBottom -= gravity
+    player.style.bottom = playerBottom + "vh"
+    player.style.right = "74vw"
 }
 
 let gameTimerId = setInterval(main, 100)
@@ -29,8 +29,8 @@ let gameTimerId = setInterval(main, 100)
 // The function that binds the spacebar key to make the bird jump.
 function jump(e) {
     if (e.code === "Space") {
-        birdBottom += jumpHeight
-        bird.style.bottom = birdBottom + "vh"
+        playerBottom += jumpHeight
+        player.style.bottom = playerBottom + "vh"
     }
 }
 
@@ -64,7 +64,7 @@ function moveObstacle() {
         createObstacle()
     }
 
-    if (gameDisplay.lastElementChild.style.right == "64vw" || bird.style.bottom == "0vh") {
+    if (gameDisplay.lastElementChild.style.right == "64vw" || player.style.bottom == "0vh") {
     }
 }
 
