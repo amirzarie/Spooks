@@ -12,15 +12,18 @@
 }
 
 #ground {
-    background-color: green;
+    background-color: brown;
     width: 100vw;
     height: 20vh;
     position: absolute;
     top: 80vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 #player {
-    background-color: red;
+    background-color: white;
     width: 7vw;
     height: 7vw;
     position: absolute;

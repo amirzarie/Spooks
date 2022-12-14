@@ -8,14 +8,15 @@ let playerBottom = 40
 let gravity = 2
 const jumpHeight = 6
 let obstacleHeight = 0
-const maxObstacleHeight = 62
-const minObstacleHeight = 50
+const maxObstacleHeight = 55
+const minObstacleHeight = 45
 const maxObstacleWidth = 25
 const minObstacleWidth = 5
 const obstacleMove = 2
 let obstaclePos = -10
 const obstacleStart = -10
-let topOrBottom = 0;
+let topOrBottom = 0
+let points = 0
 
 // The main function that runs the game.
 function main() {
@@ -41,8 +42,8 @@ function createObstacle() {
     obstaclePos = -10
     let newObstacle = document.createElement("div")
     newObstacle.style.width =  "10vw" // Math.floor(Math.random() * (maxObstacleWidth - minObstacleWidth + 1)) + minObstacleWidth + "vh"
-    obstacleHeight = Math.floor(Math.random() * (maxObstacleHeight - minObstacleHeight + 1)) + minObstacleHeight + "vh"
-    newObstacle.style.height = obstacleHeight
+    obstacleHeight = Math.floor(Math.random() * (maxObstacleHeight - minObstacleHeight + 1)) + minObstacleHeight
+    newObstacle.style.height = obstacleHeight + "vh"
     newObstacle.style.backgroundColor = "green"
     newObstacle.style.position = "absolute"
     newObstacle.style.right = obstacleStart + "vw"
@@ -55,7 +56,6 @@ function createObstacle() {
     gameDisplay.appendChild(newObstacle)
 }
 
-
 function moveObstacle() {
     obstaclePos += obstacleMove
     gameDisplay.lastElementChild.style.right = obstaclePos + "vw"
@@ -64,9 +64,32 @@ function moveObstacle() {
         createObstacle()
     }
 
-    if (gameDisplay.lastElementChild.style.right == "64vw" || player.style.bottom == "0vh") {
+    collide()
+    countPoints()   
+}
+
+function collide() {
+    if ((parseInt(gameDisplay.lastElementChild.style.right.replace("vw", "")) >= 64 && parseInt(gameDisplay.lastElementChild.style.right.replace("vw", "")) <= 74) && (parseInt(player.style.bottom.replace("vh", "")) <= obstacleHeight && topOrBottom == 0) || (parseInt(gameDisplay.lastElementChild.style.right.replace("vw", "")) >= 64 && parseInt(gameDisplay.lastElementChild.style.right.replace("vw", "")) <= 74) && (parseInt(player.style.bottom.replace("vh", "")) + 26 >= 100 - obstacleHeight && topOrBottom == 1) || parseInt(player.style.bottom.replace("vh", "")) <= 0) {
+        console.log("game over!")
+        clearInterval(gameTimerId)
+        clearInterval(timerId)
+        document.removeEventListener("keyup", jump)
+        document.body.style.filter = "blur(5px)"
     }
+}
+
+function countPoints() {
+    if (parseInt(gameDisplay.lastElementChild.style.right.replace("vw", "")) >= 98) {
+        points += 1
+        document.getElementById("points-div").innerText = "POINTS: " + points.toString()
+    }
+}
+
+function tryAgain() {
+    let restart = document.createElement("div")
+    // document.body.appendChild(restart)
 }
 
 createObstacle()
 let timerId = setInterval(moveObstacle, 80)
+
