@@ -28,3 +28,7 @@
     height: 7vw;
     position: absolute;
 }
+
+.hover {
+    background-color: yellow;
+}

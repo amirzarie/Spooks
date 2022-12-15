@@ -74,7 +74,8 @@ function collide() {
         clearInterval(gameTimerId)
         clearInterval(timerId)
         document.removeEventListener("keyup", jump)
-        document.body.style.filter = "blur(5px)"
+        tryAgain()
+        // document.body.style.filter = "blur(5px)"
     }
 }
 
@@ -86,10 +87,24 @@ function countPoints() {
 }
 
 function tryAgain() {
-    let restart = document.createElement("div")
-    // document.body.appendChild(restart)
+    let start = document.createElement("button")
+    start.style.height = "10vh"
+    start.style.width = "auto"
+    start.style.backgroundColor = "blue"
+    start.style.position = "absolute"
+    start.style.left = "50%"
+    start.style.top = "50%"
+    start.style.transform = "translate(-50%, -50%)"
+    start.style.borderRadius = "5vw"
+    start.innerHTML = "PLAY (points: " + points.toString() + ")"
+    start.style.color = "white"
+    start.style.display = "flex"
+    start.style.justifyContent = "center"
+    start.style.alignItems = "center"
+    start.style.fontSize = "3vw"
+    document.body.appendChild(start);
 }
+
 
 createObstacle()
 let timerId = setInterval(moveObstacle, 80)
-
