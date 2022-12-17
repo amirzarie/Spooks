@@ -1,20 +1,20 @@
 #game {
     position: absolute;
-    width: 100vw;
-    height: 100vh;
+    width: 98vw;
+    height: 95vh;
 }
 
 #sky {
     background-color: black;
-    width: 100vw;
+    width: 98vw;
     height: 80vh;
     position: absolute;
 }
 
 #ground {
     background-color: brown;
-    width: 100vw;
-    height: 20vh;
+    width: 98vw;
+    height: 16vh;
     position: absolute;
     top: 80vh;
     display: flex;
@@ -24,8 +24,8 @@
 
 #player {
     background-color: white;
-    width: 7vw;
-    height: 7vw;
+    width: 5vw;
+    height: 5vw;
     position: absolute;
 }
 

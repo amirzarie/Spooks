@@ -46,7 +46,7 @@ function render() {
     function createObstacle() {
         obstaclePos = -10
         let newObstacle = document.createElement("div")
-        newObstacle.style.width =  "10vw" // Math.floor(Math.random() * (maxObstacleWidth - minObstacleWidth + 1)) + minObstacleWidth + "vh"
+        newObstacle.style.width =  "7vw" // Math.floor(Math.random() * (maxObstacleWidth - minObstacleWidth + 1)) + minObstacleWidth + "vh"
         obstacleHeight = Math.floor(Math.random() * (maxObstacleHeight - minObstacleHeight + 1)) + minObstacleHeight
         newObstacle.style.height = obstacleHeight + "vh"
         newObstacle.style.backgroundColor = "green"
@@ -54,7 +54,7 @@ function render() {
         newObstacle.style.right = obstacleStart + "vw"
         topOrBottom = Math.floor(Math.random() * 2)
         if (topOrBottom == 0) {
-            newObstacle.style.bottom = 20 + "vh"
+            newObstacle.style.bottom = 15 + "vh"
         } else {
             newObstacle.style.top = 0 + "vh"
         }
@@ -69,13 +69,14 @@ function render() {
             createObstacle()
         }
 
-        collide()
+        collide()    
         countPoints()   
     }
 
     function collide() {
-        if ((parseInt(gameDisplay.lastElementChild.style.right.replace("vw", "")) >= 64 && parseInt(gameDisplay.lastElementChild.style.right.replace("vw", "")) <= 74) && (parseInt(player.style.bottom.replace("vh", "")) <= obstacleHeight && topOrBottom == 0) || (parseInt(gameDisplay.lastElementChild.style.right.replace("vw", "")) >= 64 && parseInt(gameDisplay.lastElementChild.style.right.replace("vw", "")) <= 74) && (parseInt(player.style.bottom.replace("vh", "")) + 26 >= 100 - obstacleHeight && topOrBottom == 1) || parseInt(player.style.bottom.replace("vh", "")) <= 0) {
+        if ((parseInt(gameDisplay.lastElementChild.style.right.replace("vw", "")) >= 67 && parseInt(gameDisplay.lastElementChild.style.right.replace("vw", "")) <= 74) && (parseInt(player.style.bottom.replace("vh", "")) <= obstacleHeight && topOrBottom == 0) || (parseInt(gameDisplay.lastElementChild.style.right.replace("vw", "")) >= 67 && parseInt(gameDisplay.lastElementChild.style.right.replace("vw", "")) <= 74) && (parseInt(player.style.bottom.replace("vh", "")) + 25 >= 100 - obstacleHeight && topOrBottom == 1) || parseInt(player.style.bottom.replace("vh", "")) <= 0) {
             console.log("game over!")
+            console.log()
             clearInterval(gameTimerId)
             clearInterval(timerId)
             document.removeEventListener("keyup", jump)
