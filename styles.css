@@ -2,33 +2,43 @@
     position: absolute;
     width: 98vw;
     height: 95vh;
+    /* background-image: url("assets/night_forest.png"); */
+}
+
+html {
+    overflow: hidden;
+    background-image: url("assets/Halloween_Red.png");
+    height: 98vh;
+    /* width: 50vw; */
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
 }
 
 #sky {
-    background-color: black;
+    /* background-color: black; */
     width: 98vw;
-    height: 80vh;
+    height: 90vh;
     position: absolute;
 }
 
 #ground {
-    background-color: brown;
+    /* background-color: brown; */
     width: 98vw;
-    height: 16vh;
+    height: 5vh;
     position: absolute;
-    top: 80vh;
+    top: 88vh;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
 #player {
-    background-color: white;
-    width: 5vw;
-    height: 5vw;
+    background-image: url("assets/ghost.png");
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+    width: 6vw;
+    height: 6vw;
     position: absolute;
-}
-
-.hover {
-    background-color: yellow;
 }
