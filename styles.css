@@ -1,29 +1,29 @@
+* {
+    font-family: 'Creepster', cursive;
+}
+
 #game {
     position: absolute;
     width: 98vw;
     height: 95vh;
-    /* background-image: url("assets/night_forest.png"); */
 }
 
 html {
     overflow: hidden;
     background-image: url("assets/Halloween_Red.png");
     height: 98vh;
-    /* width: 50vw; */
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
 }
 
 #sky {
-    /* background-color: black; */
     width: 98vw;
     height: 90vh;
     position: absolute;
 }
 
 #ground {
-    /* background-color: brown; */
     width: 98vw;
     height: 5vh;
     position: absolute;

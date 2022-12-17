@@ -17,12 +17,10 @@ let obstaclePos = -10
 const obstacleStart = -10
 let topOrBottom = 0
 let points = 0
+let difficulty = 80
 
 // The render function that runs the game.
 function render() {
-    // player.style.bottom = "40vh"
-    // playerBottom = 40
-
     function main() {
         playerBottom -= gravity
         player.style.bottom = playerBottom + "vh"
@@ -45,7 +43,7 @@ function render() {
     function createObstacle() {
         obstaclePos = -10
         let newObstacle = document.createElement("div")
-        newObstacle.style.width =  "7vw" // Math.floor(Math.random() * (maxObstacleWidth - minObstacleWidth + 1)) + minObstacleWidth + "vh"
+        newObstacle.style.width =  "7vw"
         obstacleHeight = Math.floor(Math.random() * (maxObstacleHeight - minObstacleHeight + 1)) + minObstacleHeight
         newObstacle.style.height = obstacleHeight + "vh"
         newObstacle.style.position = "absolute"
@@ -68,42 +66,46 @@ function render() {
     function moveObstacle() {
         obstaclePos += obstacleMove
         gameDisplay.lastElementChild.style.right = obstaclePos + "vw"
+
+        if (points%3 == 0 && gameDisplay.lastElementChild.style.right == "98vw" && difficulty >=25) {
+            difficulty -= 5
+            clearInterval(timerId)
+            timerId = setInterval(moveObstacle, difficulty)
+            console.log(difficulty)
+        }
+
         if (gameDisplay.lastElementChild.style.right == "98vw") {
+            countPoints()
             gameDisplay.removeChild(gameDisplay.lastElementChild)
             createObstacle()
         }
 
-        collide()    
-        countPoints()   
+        collide()       
     }
 
     function collide() {
-        if ((parseInt(gameDisplay.lastElementChild.style.right.replace("vw", "")) >= 67 && parseInt(gameDisplay.lastElementChild.style.right.replace("vw", "")) <= 74) && (parseInt(player.style.bottom.replace("vh", "")) <= obstacleHeight && topOrBottom == 0) || (parseInt(gameDisplay.lastElementChild.style.right.replace("vw", "")) >= 67 && parseInt(gameDisplay.lastElementChild.style.right.replace("vw", "")) <= 74) && (parseInt(player.style.bottom.replace("vh", "")) + 15 >= 98 - obstacleHeight && topOrBottom == 1) || parseInt(player.style.bottom.replace("vh", "")) <= 0) {
+        if ((parseInt(gameDisplay.lastElementChild.style.right.replace("vw", "")) >= 69 && parseInt(gameDisplay.lastElementChild.style.right.replace("vw", "")) <= 77) && (parseInt(player.style.bottom.replace("vh", "")) + 5 <= obstacleHeight && topOrBottom == 0) || (parseInt(gameDisplay.lastElementChild.style.right.replace("vw", "")) >= 69 && parseInt(gameDisplay.lastElementChild.style.right.replace("vw", "")) <= 74) && (parseInt(player.style.bottom.replace("vh", "")) + 15 >= 98 - obstacleHeight && topOrBottom == 1) || parseInt(player.style.bottom.replace("vh", "")) <= 0) {
             console.log("game over!")
-            console.log()
             clearInterval(gameTimerId)
             clearInterval(timerId)
             document.removeEventListener("keyup", jump)
-            // tryAgain()
-            // document.getElementById("play-button").onclick = function() {
-                // reset()
-                // render()
-            // }
             let start = document.createElement("div")
-            start.style.height = "auto"
-            start.style.width = "20vw"
-            start.style.backgroundColor = "blue"
+            start.style.height = "35vh"
+            start.style.width = "35vw"
             start.style.position = "absolute"
             start.style.left = "50%"
             start.style.top = "50%"
             start.style.transform = "translate(-50%, -50%)"
             start.style.borderRadius = "2vw"
-            start.innerHTML = points.toString() + " POINTS!"
-            start.style.color = "white"
+            start.innerText = points.toString() + " SPOOKS AVOIDED!"
+            start.style.color = "crimson"
             start.style.display = "flex"
             start.style.justifyContent = "center"
             start.style.alignItems = "center"
-            start.style.fontSize = "3vw"
+            start.style.fontSize = "4vw"
+            start.style.backgroundImage = "url('assets/plank_3.png')"
+            start.style.backgroundSize = "100% 100%"
+            start.style.position = "center"
             document.body.appendChild(start);
         }
     }
@@ -111,57 +113,13 @@ function render() {
     function countPoints() {
         if (parseInt(gameDisplay.lastElementChild.style.right.replace("vw", "")) >= 98) {
             points += 1
-            // document.getElementById("points-div").innerText = "POINTS: " + points.toString()
         }
-    }
 
-    function tryAgain() {
-        let start = document.createElement("button")
-        start.id = "play-button"
-        start.style.height = "10vh"
-        start.style.width = "auto"
-        start.style.backgroundColor = "blue"
-        start.style.position = "absolute"
-        start.style.left = "50%"
-        start.style.top = "50%"
-        start.style.transform = "translate(-50%, -50%)"
-        start.style.borderRadius = "5vw"
-        start.innerHTML = "PLAY (points: " + points.toString() + ")"
-        start.style.color = "white"
-        start.style.display = "flex"
-        start.style.justifyContent = "center"
-        start.style.alignItems = "center"
-        start.style.fontSize = "3vw"
-        document.body.appendChild(start);
-    }
-
-    function reset() {
-        document.getElementById("play-button").remove()
-        let playerBottom = 40
-        let gravity = 2
-        const jumpHeight = 6
-        let obstacleHeight = 0
-        const maxObstacleHeight = 55
-        const minObstacleHeight = 45
-        const maxObstacleWidth = 25
-        const minObstacleWidth = 5
-        const obstacleMove = 2
-        let obstaclePos = -10
-        const obstacleStart = -10
-        let topOrBottom = 0
-        let points = 0
-        let inPlay = true
-        player.style.bottom = "40vh"
-        gameDisplay.removeChild(gameDisplay.lastElementChild)
-        document.addEventListener("keyup", jump)
-        gameTimerId = setInterval(main, 100)
-        timerId = setInterval(moveObstacle, 80)
-        console.log(player.style.bottom)
-        console.log(player.style.right)
+        return points
     }
 
     createObstacle()
-    let timerId = setInterval(moveObstacle, 80)
+    let timerId = setInterval(moveObstacle, difficulty)
 }
 
 render()
