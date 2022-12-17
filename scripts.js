@@ -80,12 +80,27 @@ function render() {
             clearInterval(gameTimerId)
             clearInterval(timerId)
             document.removeEventListener("keyup", jump)
-            tryAgain()
-            // document.body.style.filter = "blur(5px)"
-            // document.getElementById("play-button").addEventListener("click", function () {
-            //     inPlay = true
-            //     render()
-            // })
+            // tryAgain()
+            // document.getElementById("play-button").onclick = function() {
+                // reset()
+                // render()
+            // }
+            let start = document.createElement("button")
+            start.style.height = "10vh"
+            start.style.width = "auto"
+            start.style.backgroundColor = "blue"
+            start.style.position = "absolute"
+            start.style.left = "50%"
+            start.style.top = "50%"
+            start.style.transform = "translate(-50%, -50%)"
+            start.style.borderRadius = "5vw"
+            start.innerHTML = "POINTS: " + points.toString()
+            start.style.color = "white"
+            start.style.display = "flex"
+            start.style.justifyContent = "center"
+            start.style.alignItems = "center"
+            start.style.fontSize = "3vw"
+            document.body.appendChild(start);
         }
     }
 
@@ -97,7 +112,6 @@ function render() {
     }
 
     function tryAgain() {
-        inPlay = false
         let start = document.createElement("button")
         start.id = "play-button"
         start.style.height = "10vh"
@@ -115,6 +129,31 @@ function render() {
         start.style.alignItems = "center"
         start.style.fontSize = "3vw"
         document.body.appendChild(start);
+    }
+
+    function reset() {
+        document.getElementById("play-button").remove()
+        let playerBottom = 40
+        let gravity = 2
+        const jumpHeight = 6
+        let obstacleHeight = 0
+        const maxObstacleHeight = 55
+        const minObstacleHeight = 45
+        const maxObstacleWidth = 25
+        const minObstacleWidth = 5
+        const obstacleMove = 2
+        let obstaclePos = -10
+        const obstacleStart = -10
+        let topOrBottom = 0
+        let points = 0
+        let inPlay = true
+        player.style.bottom = "40vh"
+        gameDisplay.removeChild(gameDisplay.lastElementChild)
+        document.addEventListener("keyup", jump)
+        gameTimerId = setInterval(main, 100)
+        timerId = setInterval(moveObstacle, 80)
+        console.log(player.style.bottom)
+        console.log(player.style.right)
     }
 
     createObstacle()
