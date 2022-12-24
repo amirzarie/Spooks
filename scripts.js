@@ -84,30 +84,36 @@ function render() {
     }
 
     function collide() {
-        if ((parseInt(gameDisplay.lastElementChild.style.right.replace("vw", "")) >= 69 && parseInt(gameDisplay.lastElementChild.style.right.replace("vw", "")) <= 77) && (parseInt(player.style.bottom.replace("vh", "")) + 5 <= obstacleHeight && topOrBottom == 0) || (parseInt(gameDisplay.lastElementChild.style.right.replace("vw", "")) >= 69 && parseInt(gameDisplay.lastElementChild.style.right.replace("vw", "")) <= 74) && (parseInt(player.style.bottom.replace("vh", "")) + 15 >= 98 - obstacleHeight && topOrBottom == 1) || parseInt(player.style.bottom.replace("vh", "")) <= 0) {
+        if ((parseInt(gameDisplay.lastElementChild.style.right.replace("vw", "")) >= 69 && parseInt(gameDisplay.lastElementChild.style.right.replace("vw", "")) <= 77) && (parseInt(player.style.bottom.replace("vh", "")) + 5 <= obstacleHeight && topOrBottom == 0) || (parseInt(gameDisplay.lastElementChild.style.right.replace("vw", "")) >= 69 && parseInt(gameDisplay.lastElementChild.style.right.replace("vw", "")) <= 74) && (parseInt(player.style.bottom.replace("vh", "")) + 15 >= 98 - obstacleHeight && topOrBottom == 1) || parseInt(player.style.bottom.replace("vh", "")) <= -1) {
             console.log("game over!")
             clearInterval(gameTimerId)
             clearInterval(timerId)
             document.removeEventListener("keyup", jump)
-            let start = document.createElement("div")
-            start.style.height = "35vh"
-            start.style.width = "35vw"
-            start.style.position = "absolute"
-            start.style.left = "50%"
-            start.style.top = "50%"
-            start.style.transform = "translate(-50%, -50%)"
-            start.style.borderRadius = "2vw"
-            start.innerText = points.toString() + " SPOOKS AVOIDED!"
-            start.style.color = "crimson"
-            start.style.display = "flex"
-            start.style.justifyContent = "center"
-            start.style.alignItems = "center"
-            start.style.fontSize = "4vw"
-            start.style.backgroundImage = "url('assets/plank_3.png')"
-            start.style.backgroundSize = "100% 100%"
-            start.style.position = "center"
-            document.body.appendChild(start);
+            let end = document.createElement("div")
+            end.style.height = "35vh"
+            end.style.width = "35vw"
+            end.style.position = "absolute"
+            end.style.left = "50%"
+            end.style.top = "50%"
+            end.style.transform = "translate(-50%, -50%)"
+            end.style.borderRadius = "2vw"
+            end.innerText = points.toString() + " SPOOKS AVOIDED!"
+            end.style.color = "crimson"
+            end.style.display = "flex"
+            end.style.justifyContent = "center"
+            end.style.alignItems = "center"
+            end.style.fontSize = "4vw"
+            end.style.backgroundImage = "url('assets/plank_3.png')"
+            end.style.backgroundSize = "100% 100%"
+            end.style.position = "center"
+            document.body.appendChild(end);
         }
+
+        document.addEventListener('keyup', event => {
+            if (event.code === 'Enter') {
+                document.location.reload()
+            }
+        })
     }
 
     function countPoints() {
@@ -122,5 +128,22 @@ function render() {
     let timerId = setInterval(moveObstacle, difficulty)
 }
 
-render()
+let refresh = document.createElement("div")
+refresh.style.left = "50%"
+refresh.style.top = "50%"
+refresh.style.transform = "translate(-50%, -50%)"
+refresh.style.height = "35vh"
+refresh.style.width = "35vw"
+refresh.style.color = "crimson"
+refresh.style.position = "absolute"
+refresh.innerHTML = 'Try your best to avoid the spikes by pressing the spacebar. Press enter to start and restart the game!'
+refresh.style.fontSize = "3vw"
+refresh.style.textAlign = "center"
+gameDisplay.prepend(refresh)
 
+document.addEventListener('keyup', event => {
+    if (event.code === 'Enter') {
+        refresh.remove()
+        render()
+    }
+})
