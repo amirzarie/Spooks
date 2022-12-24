@@ -2,6 +2,9 @@
 const player = document.querySelector("#player")
 const gameDisplay = document.querySelector("#game")
 const ground = document.querySelector("#ground")
+const music = document.querySelector("#music")
+
+// music.setAttribute("loop", "loop")
 
 // Setting the parameters for the game dynamics.
 let playerBottom = 40
