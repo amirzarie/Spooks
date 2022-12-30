@@ -30,4 +30,4 @@ Note: This is best enjoyed on a Chrome browser on a large screen.
 * I would have the game objects randomly change each round of the game (i.e., background image, background music, etc.)
 * Keep track of the highest score.
 
-## ENJOY!
+# THANK YOU!
