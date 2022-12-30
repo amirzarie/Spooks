@@ -9,12 +9,16 @@ Welcome to Spooks where you are a friendly yet angry ghost, the only ghost who c
 Here's the link to the browser game: https://amirzarie.github.io/Spooks/
 Note: This is best played on a Chrome browser on a large screen.
 
-## Demo:
-Here are some pictures and a gif of the gamplay.
-
+## Demo of Spooks Game:
+### Here are some pictures of the gameplay.
+- Press enter to start the game.
 <img src="readme_files\Spooks_0.png" width="800"/>
+- Press the spacebar to jump up and avoid getting pierced with the spikes.
 <img src="readme_files\Spooks_1.png" width="800"/>
+- Too bad, you lost! Press enter to restart the game.
 <img src="readme_files\Spooks_2.png" width="800"/>
+
+### Here is a gif of the gameplay.
 <img src="readme_files\Spooks_gif.gif" width="800"/>
 
 ## ENJOY!
