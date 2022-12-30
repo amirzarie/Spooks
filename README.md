@@ -11,6 +11,6 @@ Note: This is best played on a Chrome browser on a large screen.
 
 ## Demo:
 
-<img src="/images/output/video1.gif" width="600" height="400"/>
+![A gif of the Spooks gameplay!](readme_files/Spooks_gif.gif | width=600)
 
 ## ENJOY!
