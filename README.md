@@ -10,7 +10,11 @@ Here's the link to the browser game: https://amirzarie.github.io/Spooks/
 Note: This is best played on a Chrome browser on a large screen.
 
 ## Demo:
+Here are some pictures and a gif of the gamplay.
 
+<img src="readme_files\Spooks_0.png" width="800"/>
+<img src="readme_files\Spooks_1.png" width="800"/>
+<img src="readme_files\Spooks_2.png" width="800"/>
 <img src="readme_files\Spooks_gif.gif" width="800"/>
 
 ## ENJOY!
