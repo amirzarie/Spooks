@@ -11,6 +11,6 @@ Note: This is best played on a Chrome browser on a large screen.
 
 ## Demo:
 
-
+![A gif of the Spooks Game!](readme_files\Spooks_gif.gif)
 
 ## ENJOY!
